@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:id="@+id/main"
-    tools:context="EditProductActivity"
+    tools:context=".EditProductActivity"
     android:background="@color/appBackgroundColor">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -18,7 +18,7 @@
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Edit Produk"
+            android:text="@string/edit_product_title"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/textColorPrimary"
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Nama Produk"
+            android:hint="@string/product_name_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitle">
@@ -45,29 +45,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Pilihan Kategori Produk -->
-        <TextView
-            android:id="@+id/textViewCategoryLabel"
-            android:layout_width="wrap_content"
+        <!-- Pilihan Kategori Produk (MODERN DROPDOWN) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldLayoutProductType"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Jenis Produk"
-            android:textColor="@color/textColorSecondary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutName" />
-
-        <Spinner
-            android:id="@+id/spinnerProductType"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/spinner_background"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:hint="@string/product_type_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCategoryLabel"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutName">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteProductType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Input Jumlah -->
         <com.google.android.material.textfield.TextInputLayout
@@ -76,10 +73,10 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Jumlah"
+            android:hint="@string/quantity_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinnerProductType">
+            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutProductType">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextQuantity"
@@ -96,7 +93,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Tanggal Beli"
+            android:hint="@string/purchase_date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldLayoutQuantity">
@@ -118,7 +115,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Tanggal Kadaluwarsa"
+            android:hint="@string/expiry_date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldLayoutPurchaseDate">
@@ -138,7 +135,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:text="Simpan Perubahan"
+            android:text="@string/save_changes_button"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

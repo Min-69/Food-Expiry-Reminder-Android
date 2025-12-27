@@ -1,10 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Ini adalah layout utama, menggunakan CoordinatorLayout.
-    CoordinatorLayout bagus karena bisa 'mengkoordinasikan'
-    tingkah laku komponen di dalamnya, contohnya FAB yang bisa
-    berinteraksi dengan komponen lain seperti Snackbar.
--->
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,11 +7,34 @@
     android:background="@color/appBackgroundColor"
     tools:context=".MainActivity">
 
-    <!--
-        Ini adalah komponen utama untuk menampilkan daftar produk.
-        RecyclerView sangat efisien untuk menampilkan list panjang karena
-        ia mendaur ulang view yang sudah tidak terlihat di layar.
-    -->
+    <!-- AppBarLayout untuk header yang bisa berinteraksi -->
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorSurface"
+        app:elevation="0dp">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/collapsingToolbarLayout" 
+            android:layout_width="match_parent"
+            android:layout_height="112dp" 
+            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+            app:contentScrim="?attr/colorSurface"
+            app:expandedTitleGravity="bottom"
+            app:expandedTitleMarginStart="24dp"
+            app:expandedTitleMarginBottom="20dp"
+            app:expandedTitleTextAppearance="@style/TextAppearance.Material3.HeadlineLarge">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewProducts"
         android:layout_width="match_parent"
@@ -25,18 +42,46 @@
         android:clipToPadding="false"
         android:paddingTop="8dp"
         android:paddingBottom="88dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/item_product" />
-    <!--
-        - clipToPadding="false": Biar bayangan (elevation) item terakhir tidak terpotong oleh padding.
-        - paddingTop/Bottom: Memberi sedikit ruang di atas dan bawah list.
-        - tools:listitem: Ini cuma buat pratinjau di Android Studio, biar keliatan ada isinya.
-    -->
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <!--
-        Ini adalah Floating Action Button (FAB), tombol aksi utama.
-        Dalam kasus ini, gunanya untuk menambah produk baru.
-    -->
+    <!-- Empty State Layout -->
+    <LinearLayout
+        android:id="@+id/emptyStateLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:src="@drawable/ic_add_24"
+            app:tint="@color/textColorSecondary"
+            android:alpha="0.5"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="@string/empty_state_title"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/empty_state_subtitle"
+            android:textColor="@color/textColorSecondary"
+            android:gravity="center"
+            android:maxWidth="280dp"/>
+
+    </LinearLayout>
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabAddProduct"
         android:layout_width="wrap_content"
@@ -47,10 +92,5 @@
         android:src="@drawable/ic_add_24"
         app:backgroundTint="@color/fab_background"
         app:tint="@color/white" />
-    <!--
-        - layout_gravity: Menempatkan tombol ini di pojok kanan bawah.
-        - contentDescription: Penting untuk aksesibilitas (misalnya untuk pengguna tunanetra).
-        - backgroundTint/tint: Mengatur warna background dan warna ikonnya.
-    -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

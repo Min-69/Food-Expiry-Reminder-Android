@@ -13,6 +13,8 @@ import android.os.Bundle
 import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
+import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -23,6 +25,8 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.CollapsingToolbarLayout
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.example.foodexpiredreminder.SettingsActivity.Companion.NOTIFICATION_DAYS
 import com.example.foodexpiredreminder.SettingsActivity.Companion.PREFS_NAME
@@ -37,6 +41,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fileHelper: FileHelper
     private lateinit var alarmScheduler: AlarmScheduler
     private lateinit var searchView: SearchView
+    private lateinit var emptyStateLayout: LinearLayout
+    private lateinit var toolbar: MaterialToolbar
+    private lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
 
     private val editProductLauncher = registerForActivityResult(
         ActivityResultContracts.StartActivityForResult()
@@ -94,15 +101,17 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        val prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE)
-        val themeMode = prefs.getInt(THEME_PREF, AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-        AppCompatDelegate.setDefaultNightMode(themeMode)
-
         setContentView(R.layout.activity_main)
+
+        toolbar = findViewById(R.id.toolbar)
+        setSupportActionBar(toolbar)
+
+        collapsingToolbarLayout = findViewById(R.id.collapsingToolbarLayout)
+        collapsingToolbarLayout.title = getString(R.string.app_name)
 
         recyclerView = findViewById(R.id.recyclerViewProducts)
         fab = findViewById(R.id.fabAddProduct)
+        emptyStateLayout = findViewById(R.id.emptyStateLayout)
         alarmScheduler = AlarmScheduler(this)
         fileHelper = FileHelper(this)
         productList = fileHelper.loadData()
@@ -131,6 +140,17 @@ class MainActivity : AppCompatActivity() {
 
         askNotificationPermission()
         checkExactAlarmPermission()
+        checkEmptyState()
+    }
+
+    private fun checkEmptyState() {
+        if (productList.isEmpty()) {
+            recyclerView.visibility = View.GONE
+            emptyStateLayout.visibility = View.VISIBLE
+        } else {
+            recyclerView.visibility = View.VISIBLE
+            emptyStateLayout.visibility = View.GONE
+        }
     }
 
     override fun onResume() {
@@ -259,7 +279,7 @@ class MainActivity : AppCompatActivity() {
         productList.sortBy { it.expiryDate }
 
         productAdapter.updateData(productList)
-        //fileHelper.saveData(productList) // Save data on pause instead
+        checkEmptyState() // Check empty state after every refresh
     }
 
     private fun setThemeMode(mode: Int) {

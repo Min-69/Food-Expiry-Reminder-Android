@@ -6,8 +6,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.AutoCompleteTextView
 import android.widget.Button
-import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
@@ -19,7 +19,7 @@ import java.util.Locale
 
 class EditProductActivity : AppCompatActivity() {
     private lateinit var editTextProductName: TextInputEditText
-    private lateinit var spinnerProductType: Spinner
+    private lateinit var autoCompleteProductType: AutoCompleteTextView
     private lateinit var editTextQuantity: TextInputEditText
     private lateinit var editTextPurchaseDate: TextInputEditText
     private lateinit var editTextExpiryDate: TextInputEditText
@@ -51,7 +51,7 @@ class EditProductActivity : AppCompatActivity() {
         }
 
         editTextProductName = findViewById(R.id.editTextProductName)
-        spinnerProductType = findViewById(R.id.spinnerProductType)
+        autoCompleteProductType = findViewById(R.id.autoCompleteProductType)
         editTextQuantity = findViewById(R.id.editTextQuantity)
         editTextPurchaseDate = findViewById(R.id.editTextPurchaseDate)
         editTextExpiryDate = findViewById(R.id.editTextExpiryDate)
@@ -69,16 +69,10 @@ class EditProductActivity : AppCompatActivity() {
 
     private fun setupSpinner() {
         val productTypes = ProductType.values().map { 
-            val resId = when(it) {
-                ProductType.KERING -> R.string.sort_dry
-                ProductType.BASAH -> R.string.sort_wet
-                ProductType.BEKU -> R.string.sort_frozen
-            }
-            getString(resId)
+            getString(it.getResId())
         }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productTypes)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerProductType.adapter = adapter
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, productTypes)
+        autoCompleteProductType.setAdapter(adapter)
     }
 
     private fun setupDatePickers() {
@@ -117,8 +111,8 @@ class EditProductActivity : AppCompatActivity() {
         editTextPurchaseDate.setText(dateFormat.format(Date(product.purchaseDate)))
         editTextExpiryDate.setText(dateFormat.format(Date(product.expiryDate)))
 
-        val productTypePosition = product.type.ordinal
-        spinnerProductType.setSelection(productTypePosition)
+        val typeName = getString(product.type.getResId())
+        autoCompleteProductType.setText(typeName, false)
     }
 
     private fun saveChanges() {
@@ -127,8 +121,9 @@ class EditProductActivity : AppCompatActivity() {
         val quantityStr = editTextQuantity.text.toString()
         val purchaseDateStr = editTextPurchaseDate.text.toString()
         val expiryDateStr = editTextExpiryDate.text.toString()
+        val typeStr = autoCompleteProductType.text.toString()
 
-        if (name.isBlank() || quantityStr.isBlank() || purchaseDateStr.isBlank() || expiryDateStr.isBlank()) {
+        if (name.isBlank() || quantityStr.isBlank() || purchaseDateStr.isBlank() || expiryDateStr.isBlank() || typeStr.isBlank()) {
             Toast.makeText(this, getString(R.string.all_fields_required), Toast.LENGTH_SHORT).show()
             return
         }
@@ -137,7 +132,8 @@ class EditProductActivity : AppCompatActivity() {
             val quantity = quantityStr.toInt()
             val purchaseDate = dateFormat.parse(purchaseDateStr)?.time ?: 0L
             val expiryDate = dateFormat.parse(expiryDateStr)?.time ?: 0L
-            val type = ProductType.values()[spinnerProductType.selectedItemPosition]
+            
+            val type = ProductType.values().find { getString(it.getResId()) == typeStr } ?: ProductType.KERING
 
             // Preserve the original ID by using copy()
             val updatedProduct = oldProduct.copy(

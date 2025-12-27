@@ -45,29 +45,26 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!-- Pilihan Kategori Produk -->
-        <TextView
-            android:id="@+id/textViewCategoryLabel"
-            android:layout_width="wrap_content"
+        <!-- Pilihan Kategori Produk (MODERN DROPDOWN) -->
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textFieldLayoutProductType"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@string/product_type_label"
-            android:textColor="@color/textColorSecondary"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutName" />
-
-        <Spinner
-            android:id="@+id/spinnerProductType"
-            android:layout_width="0dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/spinner_background"
-            android:paddingStart="12dp"
-            android:paddingEnd="12dp"
+            android:hint="@string/product_type_label"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textViewCategoryLabel"
-            tools:ignore="SpeakableTextPresentCheck" />
+            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutName">
+
+            <AutoCompleteTextView
+                android:id="@+id/autoCompleteProductType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="none"
+                tools:ignore="LabelFor" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
         <!-- Input Jumlah -->
         <com.google.android.material.textfield.TextInputLayout
@@ -79,7 +76,7 @@
             android:hint="@string/quantity_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/spinnerProductType">
+            app:layout_constraintTop_toBottomOf="@id/textFieldLayoutProductType">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextQuantity"

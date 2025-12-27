@@ -15,6 +15,8 @@
     <string name="purchase_date_hint">Tanggal Beli</string>
     <string name="expiry_date_hint">Tanggal Kadaluwarsa</string>
     <string name="save_product_button">Simpan Produk</string>
+    <string name="edit_product_title">Edit Produk</string>
+    <string name="save_changes_button">Simpan Perubahan</string>
 
     <!-- MainActivity Strings -->
     <string name="list_updated">Daftar telah diperbarui</string>
@@ -30,6 +32,8 @@
     <string name="exact_alarm_permission_message">Aplikasi ini memerlukan izin untuk menyetel alarm agar dapat memberikan notifikasi pengingat kedaluwarsa yang akurat. Izinkan aplikasi ini di pengaturan sistem.</string>
     <string name="open_settings_button">Buka Pengaturan</string>
     <string name="later_button">Nanti</string>
+    <string name="empty_state_title">Belum Ada Produk</string>
+    <string name="empty_state_subtitle">Tekan tombol + di pojok kanan bawah untuk menambahkan produk pertama Anda.</string>
 
     <!-- Settings Strings -->
     <string name="language_title">Bahasa</string>
