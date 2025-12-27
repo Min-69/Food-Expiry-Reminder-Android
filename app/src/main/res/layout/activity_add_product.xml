@@ -18,7 +18,7 @@
             android:id="@+id/textViewTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Tambah Produk Baru"
+            android:text="@string/add_product_title"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="@color/textColorPrimary"
@@ -32,7 +32,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:hint="Nama Produk"
+            android:hint="@string/product_name_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textViewTitle">
@@ -51,7 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Jenis Produk"
+            android:text="@string/product_type_label"
             android:textColor="@color/textColorSecondary"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldLayoutName" />
@@ -76,7 +76,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Jumlah"
+            android:hint="@string/quantity_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/spinnerProductType">
@@ -96,7 +96,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Tanggal Beli"
+            android:hint="@string/purchase_date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldLayoutQuantity">
@@ -118,7 +118,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:hint="Tanggal Kadaluwarsa"
+            android:hint="@string/expiry_date_hint"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textFieldLayoutPurchaseDate">
@@ -138,7 +138,7 @@
             android:layout_width="0dp"
             android:layout_height="60dp"
             android:layout_marginTop="32dp"
-            android:text="Simpan Produk"
+            android:text="@string/save_product_button"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

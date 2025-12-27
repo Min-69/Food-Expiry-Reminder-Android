@@ -5,13 +5,13 @@
     <item
         android:id="@+id/action_search"
         android:icon="@drawable/ic_search"
-        android:title="Cari Produk"
+        android:title="@string/search_products"
         app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="ifRoom|collapseActionView" />
 
     <item
         android:id="@+id/action_theme"
-        android:title="Ganti Tema"
+        android:title="@string/change_theme"
         app:showAsAction="never">
         <menu>
             <group
@@ -19,13 +19,13 @@
                 android:checkableBehavior="single">
                 <item
                     android:id="@+id/theme_light"
-                    android:title="Terang" />
+                    android:title="@string/theme_light" />
                 <item
                     android:id="@+id/theme_dark"
-                    android:title="Gelap" />
+                    android:title="@string/theme_dark" />
                 <item
                     android:id="@+id/theme_system"
-                    android:title="Sistem" />
+                    android:title="@string/theme_system" />
             </group>
         </menu>
     </item>
@@ -33,28 +33,28 @@
     <item
         android:id="@+id/action_sort"
         android:icon="@drawable/ic_sort_24"
-        android:title="Sortir"
+        android:title="@string/sort"
         app:showAsAction="never">
         <menu>
             <item
                 android:id="@+id/sort_all"
-                android:title="Semua" />
+                android:title="@string/sort_all" />
             <item
                 android:id="@+id/sort_dry"
-                android:title="Kering" />
+                android:title="@string/sort_dry" />
             <item
                 android:id="@+id/sort_wet"
-                android:title="Basah" />
+                android:title="@string/sort_wet" />
             <item
                 android:id="@+id/sort_frozen"
-                android:title="Beku" />
+                android:title="@string/sort_frozen" />
         </menu>
     </item>
 
     <item
         android:id="@+id/action_settings"
         android:icon="@drawable/ic_settings"
-        android:title="Pengaturan"
+        android:title="@string/settings"
         app:showAsAction="never" />
 
 </menu>

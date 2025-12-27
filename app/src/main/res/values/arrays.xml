@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Array untuk judul bahasa yang dilihat pengguna -->
+    <string-array name="language_entries">
+        <item>@string/system_default</item>
+        <item>Bahasa Indonesia</item>
+        <item>English</item>
+    </string-array>
+
+    <!-- Array untuk nilai yang disimpan saat pengguna memilih bahasa -->
+    <string-array name="language_values">
+        <item>system</item>
+        <item>in</item>
+        <item>en</item>
+    </string-array>
+</resources>

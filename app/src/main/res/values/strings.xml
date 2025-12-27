@@ -1,4 +1,79 @@
 <resources>
     <string name="app_name">Food Expired Reminder</string>
     <string name="title_activity_settings">Pengaturan</string>
+
+    <!-- Layout Strings -->
+    <string name="add_new_product">Tambah Produk Baru</string>
+    <string name="purchase_date_label">Tgl Beli</string>
+    <string name="expiry_date_label">Tgl Expired</string>
+    <string name="edit_product">Edit Produk</string>
+    <string name="delete_product">Hapus Produk</string>
+    <string name="add_product_title">Tambah Produk Baru</string>
+    <string name="product_name_hint">Nama Produk</string>
+    <string name="product_type_label">Jenis Produk</string>
+    <string name="quantity_hint">Jumlah</string>
+    <string name="purchase_date_hint">Tanggal Beli</string>
+    <string name="expiry_date_hint">Tanggal Kadaluwarsa</string>
+    <string name="save_product_button">Simpan Produk</string>
+
+    <!-- MainActivity Strings -->
+    <string name="list_updated">Daftar telah diperbarui</string>
+    <string name="product_added_successfully">\'%1$s\' berhasil ditambahkan</string>
+    <string name="notification_permission_denied">Notifikasi tidak akan muncul tanpa izin.</string>
+    <string name="search_hint">Ketik nama produk…</string>
+    <string name="delete_product_title">Hapus Produk</string>
+    <string name="delete_product_confirmation">Apakah Anda yakin ingin menghapus \'%1$s\'?</string>
+    <string name="delete_button">Hapus</string>
+    <string name="product_deleted_successfully">\'%1$s\' telah dihapus</string>
+    <string name="cancel_button">Batal</string>
+    <string name="permission_required_title">Izin Diperlukan</string>
+    <string name="exact_alarm_permission_message">Aplikasi ini memerlukan izin untuk menyetel alarm agar dapat memberikan notifikasi pengingat kedaluwarsa yang akurat. Izinkan aplikasi ini di pengaturan sistem.</string>
+    <string name="open_settings_button">Buka Pengaturan</string>
+    <string name="later_button">Nanti</string>
+
+    <!-- Settings Strings -->
+    <string name="language_title">Bahasa</string>
+    <string name="language_summary">Pilih bahasa tampilan aplikasi</string>
+    <string name="system_default">Sesuai Sistem</string>
+    <string name="category_notifications">Notifikasi</string>
+    <string name="enable_notifications_title">Aktifkan Notifikasi</string>
+    <string name="enable_notifications_summary">Tampilkan pengingat beberapa hari sebelum kedaluwarsa</string>
+    <string name="notification_days_title">Hari Notifikasi</string>
+    <string name="notification_days_summary">Jumlah hari sebelum kedaluwarsa (contoh: 3)</string>
+    <string name="notification_time_title">Waktu Notifikasi</string>
+    <string name="notification_time_summary">Waktu pengingat dalam format HHmm (contoh: 0900)</string>
+    <string name="category_application">Aplikasi</string>
+
+    <!-- Menu Strings -->
+    <string name="search_products">Cari Produk</string>
+    <string name="change_theme">Ganti Tema</string>
+    <string name="theme_light">Terang</string>
+    <string name="theme_dark">Gelap</string>
+    <string name="theme_system">Sistem</string>
+    <string name="sort">Sortir</string>
+    <string name="sort_all">Semua</string>
+    <string name="sort_dry">Kering</string>
+    <string name="sort_wet">Basah</string>
+    <string name="sort_frozen">Beku</string>
+    <string name="settings">Pengaturan</string>
+
+    <!-- ProductAdapter Strings -->
+    <string name="product_type_format">Jenis: %1$s</string>
+    <string name="product_quantity_format">Jumlah: %1$s</string>
+
+    <!-- Add/EditProductActivity Strings -->
+    <string name="all_fields_required">Semua kolom harus diisi</string>
+    <string name="product_added">Produk berhasil ditambahkan!</string>
+    <string name="date_format_error">Kesalahan format tanggal. Harap periksa kembali.</string>
+    <string name="quantity_format_error">Kesalahan format jumlah. Harap masukkan angka.</string>
+    <string name="unexpected_error">Terjadi kesalahan tidak terduga saat menyimpan: %1$s</string>
+    <string name="load_product_error">Gagal memuat data produk</string>
+    <string name="product_updated">Produk berhasil diperbarui!</string>
+
+    <!-- NotificationReceiver Strings -->
+    <string name="default_product_name">Produk</string>
+    <string name="notification_channel_name">Pengingat Makanan</string>
+    <string name="notification_title">Produk Hampir Kedaluwarsa!</string>
+    <string name="notification_text">%1$s akan segera kedaluwarsa. Segera periksa!</string>
+
 </resources>

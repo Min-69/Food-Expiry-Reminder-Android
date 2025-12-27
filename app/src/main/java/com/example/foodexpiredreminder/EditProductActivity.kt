@@ -45,7 +45,7 @@ class EditProductActivity : AppCompatActivity() {
         productPosition = intent.getIntExtra("EXTRA_PRODUCT_POSITION", -1)
 
         if (currentProduct == null || productPosition == -1) {
-            Toast.makeText(this, "Gagal memuat data produk", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.load_product_error), Toast.LENGTH_SHORT).show()
             finish()
             return
         }
@@ -68,8 +68,15 @@ class EditProductActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner() {
-        val categories = ProductType.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categories)
+        val productTypes = ProductType.values().map { 
+            val resId = when(it) {
+                ProductType.KERING -> R.string.sort_dry
+                ProductType.BASAH -> R.string.sort_wet
+                ProductType.BEKU -> R.string.sort_frozen
+            }
+            getString(resId)
+        }
+        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerProductType.adapter = adapter
     }
@@ -122,7 +129,7 @@ class EditProductActivity : AppCompatActivity() {
         val expiryDateStr = editTextExpiryDate.text.toString()
 
         if (name.isBlank() || quantityStr.isBlank() || purchaseDateStr.isBlank() || expiryDateStr.isBlank()) {
-            Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.all_fields_required), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -149,17 +156,17 @@ class EditProductActivity : AppCompatActivity() {
             resultIntent.putExtra("PRODUCT_POSITION", productPosition)
             setResult(Activity.RESULT_OK, resultIntent)
 
-            Toast.makeText(this, "Produk berhasil diperbarui!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.product_updated), Toast.LENGTH_SHORT).show()
             finish()
 
         } catch (e: ParseException) {
-            Toast.makeText(this, "Kesalahan format tanggal. Harap periksa kembali.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.date_format_error), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         } catch (e: NumberFormatException) {
-            Toast.makeText(this, "Kesalahan format jumlah. Harap masukkan angka.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.quantity_format_error), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         } catch (e: Exception) {
-            Toast.makeText(this, "Terjadi kesalahan tidak terduga: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.unexpected_error, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }

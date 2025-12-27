@@ -48,7 +48,14 @@ class AddProductActivity : AppCompatActivity() {
     }
 
     private fun setupSpinner() {
-        val productTypes = ProductType.values().map { it.name.lowercase().replaceFirstChar { char -> char.uppercase() } }
+        val productTypes = ProductType.values().map { 
+            val resId = when(it) {
+                ProductType.KERING -> R.string.sort_dry
+                ProductType.BASAH -> R.string.sort_wet
+                ProductType.BEKU -> R.string.sort_frozen
+            }
+            getString(resId)
+        }
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, productTypes)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerProductType.adapter = adapter
@@ -88,7 +95,7 @@ class AddProductActivity : AppCompatActivity() {
         val expiryDateStr = editTextExpiryDate.text.toString()
 
         if (name.isBlank() || quantityStr.isBlank() || purchaseDateStr.isBlank() || expiryDateStr.isBlank()) {
-            Toast.makeText(this, "Semua kolom harus diisi", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.all_fields_required), Toast.LENGTH_SHORT).show()
             return
         }
 
@@ -114,16 +121,16 @@ class AddProductActivity : AppCompatActivity() {
             resultIntent.putExtra("NEW_PRODUCT", newProduct)
             setResult(Activity.RESULT_OK, resultIntent)
 
-            Toast.makeText(this, "Produk berhasil ditambahkan!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, getString(R.string.product_added), Toast.LENGTH_SHORT).show()
             finish()
         } catch (e: ParseException) {
-            Toast.makeText(this, "Kesalahan format tanggal. Harap periksa kembali.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.date_format_error), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         } catch (e: NumberFormatException) {
-            Toast.makeText(this, "Kesalahan format jumlah. Harap masukkan angka.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.quantity_format_error), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         } catch (e: Exception) {
-            Toast.makeText(this, "Terjadi kesalahan tidak terduga saat menyimpan: ${e.message}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.unexpected_error, e.message), Toast.LENGTH_LONG).show()
             e.printStackTrace()
         }
     }

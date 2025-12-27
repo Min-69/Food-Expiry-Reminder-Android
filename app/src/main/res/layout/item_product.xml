@@ -124,7 +124,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/textColorSecondary"
-                            android:text="Tgl Beli"
+                            android:text="@string/purchase_date_label"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -164,7 +164,7 @@
                             android:id="@+id/expiryLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tgl Expired"
+                            android:text="@string/expiry_date_label"
                             android:textSize="12sp"
                             android:textStyle="bold" />
 
@@ -188,7 +188,7 @@
             android:layout_marginTop="4dp"
             android:layout_marginEnd="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Edit Produk"
+            android:contentDescription="@string/edit_product"
             android:padding="12dp"
             android:src="@drawable/ic_edit_24"
             app:layout_constraintEnd_toEndOf="parent"
@@ -202,7 +202,7 @@
             android:layout_height="48dp"
             android:layout_marginTop="4dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Hapus Produk"
+            android:contentDescription="@string/delete_product"
             android:padding="12dp"
             android:src="@drawable/ic_delete_24"
             app:layout_constraintEnd_toStartOf="@id/buttonEdit"

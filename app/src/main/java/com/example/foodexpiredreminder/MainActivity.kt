@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
                     productList[indexInMasterList] = updatedProduct
                     sortAndRefreshList()
                     alarmScheduler.schedule(updatedProduct) // Reschedule alarm
-                    Toast.makeText(this, "Daftar telah diperbarui", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, getString(R.string.list_updated), Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
                 productList.add(newProduct)
                 sortAndRefreshList()
                 alarmScheduler.schedule(newProduct) // Schedule alarm for new product
-                Toast.makeText(this, "'${newProduct.name}' berhasil ditambahkan", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.product_added_successfully, newProduct.name), Toast.LENGTH_SHORT).show()
             }
         }
     }
@@ -88,7 +88,7 @@ class MainActivity : AppCompatActivity() {
         ActivityResultContracts.RequestPermission()
     ) { isGranted: Boolean ->
         if (!isGranted) {
-            Toast.makeText(this, "Notifikasi tidak akan muncul tanpa izin.", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, getString(R.string.notification_permission_denied), Toast.LENGTH_LONG).show()
         }
     }
 
@@ -169,7 +169,7 @@ class MainActivity : AppCompatActivity() {
 
         val searchItem = menu.findItem(R.id.action_search)
         searchView = searchItem.actionView as SearchView
-        searchView.queryHint = "Ketik nama produk..."
+        searchView.queryHint = getString(R.string.search_hint)
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
@@ -208,16 +208,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDeleteConfirmationDialog(product: Product) {
         AlertDialog.Builder(this)
-            .setTitle("Hapus Produk")
-            .setMessage("Apakah Anda yakin ingin menghapus '${product.name}'?")
+            .setTitle(getString(R.string.delete_product_title))
+            .setMessage(getString(R.string.delete_product_confirmation, product.name))
             .setIcon(android.R.drawable.ic_dialog_alert)
-            .setPositiveButton("Hapus") { _, _ ->
+            .setPositiveButton(getString(R.string.delete_button)) { _, _ ->
                 alarmScheduler.cancel(product)
                 productList.removeAll { it.id == product.id }
                 sortAndRefreshList()
-                Toast.makeText(this, "'${product.name}' telah dihapus", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, getString(R.string.product_deleted_successfully, product.name), Toast.LENGTH_SHORT).show()
             }
-            .setNegativeButton("Batal", null)
+            .setNegativeButton(getString(R.string.cancel_button), null)
             .show()
     }
 
@@ -234,15 +234,15 @@ class MainActivity : AppCompatActivity() {
             val alarmManager = getSystemService(Context.ALARM_SERVICE) as AlarmManager
             if (!alarmManager.canScheduleExactAlarms()) {
                 AlertDialog.Builder(this)
-                    .setTitle("Izin Diperlukan")
-                    .setMessage("Aplikasi ini memerlukan izin untuk menyetel alarm agar dapat memberikan notifikasi pengingat kedaluwarsa yang akurat. Izinkan aplikasi ini di pengaturan sistem.")
-                    .setPositiveButton("Buka Pengaturan") { _, _ ->
+                    .setTitle(getString(R.string.permission_required_title))
+                    .setMessage(getString(R.string.exact_alarm_permission_message))
+                    .setPositiveButton(getString(R.string.open_settings_button)) { _, _ ->
                         val intent = Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM).apply {
                             data = Uri.fromParts("package", packageName, null)
                         }
                         startActivity(intent)
                     }
-                    .setNegativeButton("Nanti", null)
+                    .setNegativeButton(getString(R.string.later_button), null)
                     .show()
             }
         }

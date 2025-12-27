@@ -74,11 +74,25 @@ class ProductAdapter(
         private val dateFormat = SimpleDateFormat("dd-MM-yyyy", Locale.getDefault())
 
         fun bind(product: Product) {
+            val context = itemView.context
             productName.text = product.name
-            productType.text = "Jenis: ${product.type.name.lowercase().replaceFirstChar { it.uppercase() }}"
-            productQuantity.text = "Jumlah: ${product.quantity}"
-            purchaseDate.text = "Tgl Beli: ${dateFormat.format(Date(product.purchaseDate))}"
-            expiryDate.text = "Kadaluwarsa: ${dateFormat.format(Date(product.expiryDate))}"
+
+            // Get translated product type name
+            val productTypeNameResId = when (product.type) {
+                ProductType.BASAH -> R.string.sort_wet
+                ProductType.KERING -> R.string.sort_dry
+                ProductType.BEKU -> R.string.sort_frozen
+            }
+            val productTypeName = context.getString(productTypeNameResId)
+
+            // Set the text using formatted strings
+            productType.text = context.getString(R.string.product_type_format, productTypeName)
+            productQuantity.text = context.getString(R.string.product_quantity_format, product.quantity.toString())
+
+            // Date format is language-agnostic. The labels for these are in the XML layout.
+            purchaseDate.text = dateFormat.format(Date(product.purchaseDate))
+            expiryDate.text = dateFormat.format(Date(product.expiryDate))
+
 
             buttonEdit.setOnClickListener {
                 val currentPosition = adapterPosition

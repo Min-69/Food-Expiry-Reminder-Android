@@ -1,0 +1,79 @@
+<resources>
+    <string name="app_name">Food Expiry Reminder</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Layout Strings -->
+    <string name="add_new_product">Add New Product</string>
+    <string name="purchase_date_label">Purchase Date</string>
+    <string name="expiry_date_label">Expiry Date</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="add_product_title">Add New Product</string>
+    <string name="product_name_hint">Product Name</string>
+    <string name="product_type_label">Product Type</string>
+    <string name="quantity_hint">Quantity</string>
+    <string name="purchase_date_hint">Purchase Date</string>
+    <string name="expiry_date_hint">Expiry Date</string>
+    <string name="save_product_button">Save Product</string>
+
+    <!-- MainActivity Strings -->
+    <string name="list_updated">List updated</string>
+    <string name="product_added_successfully">\'%1$s\' was added successfully</string>
+    <string name="notification_permission_denied">Notifications will not be shown without permission.</string>
+    <string name="search_hint">Type a product name…</string>
+    <string name="delete_product_title">Delete Product</string>
+    <string name="delete_product_confirmation">Are you sure you want to delete \'%1$s\'?</string>
+    <string name="delete_button">Delete</string>
+    <string name="product_deleted_successfully">\'%1$s\' has been deleted</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="permission_required_title">Permission Required</string>
+    <string name="exact_alarm_permission_message">This app requires permission to set exact alarms to provide accurate expiry reminder notifications. Please allow this permission in the system settings.</string>
+    <string name="open_settings_button">Open Settings</string>
+    <string name="later_button">Later</string>
+
+    <!-- Settings Strings -->
+    <string name="language_title">Language</string>
+    <string name="language_summary">Choose the display language of the app</string>
+    <string name="system_default">System Default</string>
+    <string name="category_notifications">Notifications</string>
+    <string name="enable_notifications_title">Enable Notifications</string>
+    <string name="enable_notifications_summary">Show reminders a few days before expiry</string>
+    <string name="notification_days_title">Notification Days</string>
+    <string name="notification_days_summary">Number of days before expiry (e.g., 3)</string>
+    <string name="notification_time_title">Notification Time</string>
+    <string name="notification_time_summary">Reminder time in HHmm format (e.g., 0900)</string>
+    <string name="category_application">Application</string>
+
+    <!-- Menu Strings -->
+    <string name="search_products">Search Products</string>
+    <string name="change_theme">Change Theme</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="theme_system">System</string>
+    <string name="sort">Sort</string>
+    <string name="sort_all">All</string>
+    <string name="sort_dry">Dry</string>
+    <string name="sort_wet">Wet</string>
+    <string name="sort_frozen">Frozen</string>
+    <string name="settings">Settings</string>
+
+    <!-- ProductAdapter Strings -->
+    <string name="product_type_format">Type: %1$s</string>
+    <string name="product_quantity_format">Quantity: %1$s</string>
+
+    <!-- Add/EditProductActivity Strings -->
+    <string name="all_fields_required">All fields are required</string>
+    <string name="product_added">Product added successfully!</string>
+    <string name="date_format_error">Date format error. Please check again.</string>
+    <string name="quantity_format_error">Quantity format error. Please enter a number.</string>
+    <string name="unexpected_error">An unexpected error occurred while saving: %1$s</string>
+    <string name="load_product_error">Failed to load product data</string>
+    <string name="product_updated">Product updated successfully!</string>
+
+    <!-- NotificationReceiver Strings -->
+    <string name="default_product_name">Product</string>
+    <string name="notification_channel_name">Food Reminders</string>
+    <string name="notification_title">Product Nearing Expiry!</string>
+    <string name="notification_text">%1$s is about to expire. Check it soon!</string>
+
+</resources>

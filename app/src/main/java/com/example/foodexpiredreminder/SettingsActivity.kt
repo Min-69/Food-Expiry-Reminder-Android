@@ -1,10 +1,15 @@
 package com.example.foodexpiredreminder
 
+import android.os.Build
 import android.os.Bundle
 import android.text.InputType
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.os.LocaleListCompat
 import androidx.preference.EditTextPreference
+import androidx.preference.ListPreference
+import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 
 class SettingsActivity : AppCompatActivity() {
@@ -56,6 +61,21 @@ class SettingsActivity : AppCompatActivity() {
                     false
                 }
             }
+
+            val languagePreference = findPreference<ListPreference>("app_language")
+            languagePreference?.onPreferenceChangeListener = Preference.OnPreferenceChangeListener { _, newValue ->
+                updateAppLanguage(newValue as String)
+                true
+            }
+        }
+
+        private fun updateAppLanguage(language: String) {
+            val localeList = when (language) {
+                "in" -> LocaleListCompat.forLanguageTags("in")
+                "en" -> LocaleListCompat.forLanguageTags("en")
+                else -> LocaleListCompat.getEmptyLocaleList() // Follow system
+            }
+            AppCompatDelegate.setApplicationLocales(localeList)
         }
     }
 
