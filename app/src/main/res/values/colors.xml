@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Warna default -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!--
+    Definisikan warna SEMANTIC (berdasarkan fungsi)
+    -->
+    <color name="textColorPrimary">#000000</color> <!-- Teks utama hitam -->
+    <color name="textColorSecondary">#757575</color> <!-- Teks sekunder abu-abu gelap -->
+    <color name="cardBackgroundColor">#FFFFFF</color> <!-- Warna kartu putih -->
+    <color name="appBackgroundColor">#E3F2FD</color> <!-- Warna background utama biru pucat -->
+
+    <!-- Warna untuk Status Produk -->
+    <color name="status_safe">#4CAF50</color> <!-- Hijau -->
+    <color name="status_warning">#FFC107</color> <!-- Kuning/Amber -->
+    <color name="status_expired">#F44336</color> <!-- Merah -->
+
+    <!-- Warna baru untuk UI -->
+    <color name="fab_background">#2962FF</color>
+</resources>

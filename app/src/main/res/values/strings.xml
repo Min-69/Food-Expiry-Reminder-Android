@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Food Expired Reminder</string>
+    <string name="title_activity_settings">Pengaturan</string>
+</resources>

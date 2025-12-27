@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Ini adalah layout utama, menggunakan CoordinatorLayout.
+    CoordinatorLayout bagus karena bisa 'mengkoordinasikan'
+    tingkah laku komponen di dalamnya, contohnya FAB yang bisa
+    berinteraksi dengan komponen lain seperti Snackbar.
+-->
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/appBackgroundColor"
+    tools:context=".MainActivity">
+
+    <!--
+        Ini adalah komponen utama untuk menampilkan daftar produk.
+        RecyclerView sangat efisien untuk menampilkan list panjang karena
+        ia mendaur ulang view yang sudah tidak terlihat di layar.
+    -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProducts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="8dp"
+        android:paddingBottom="88dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_product" />
+    <!--
+        - clipToPadding="false": Biar bayangan (elevation) item terakhir tidak terpotong oleh padding.
+        - paddingTop/Bottom: Memberi sedikit ruang di atas dan bawah list.
+        - tools:listitem: Ini cuma buat pratinjau di Android Studio, biar keliatan ada isinya.
+    -->
+
+    <!--
+        Ini adalah Floating Action Button (FAB), tombol aksi utama.
+        Dalam kasus ini, gunanya untuk menambah produk baru.
+    -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddProduct"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="Tambah Produk Baru"
+        android:src="@drawable/ic_add_24"
+        app:backgroundTint="@color/fab_background"
+        app:tint="@color/white" />
+    <!--
+        - layout_gravity: Menempatkan tombol ini di pojok kanan bawah.
+        - contentDescription: Penting untuk aksesibilitas (misalnya untuk pengguna tunanetra).
+        - backgroundTint/tint: Mengatur warna background dan warna ikonnya.
+    -->
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

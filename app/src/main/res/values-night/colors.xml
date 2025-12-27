@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Warna default untuk mode gelap -->
+    <color name="black">#FFFFFFFF</color> <!-- Di mode gelap, "black" jadi putih -->
+    <color name="white">#121212</color> <!-- Di mode gelap, "white" jadi hitam pekat -->
+
+    <!--
+    Definisikan warna SEMANTIC (berdasarkan fungsi)
+    Ini akan kita gunakan di seluruh aplikasi
+    -->
+    <color name="textColorPrimary">#FFFFFF</color> <!-- Teks utama jadi putih -->
+    <color name="textColorSecondary">#C7C7C7</color> <!-- Teks sekunder jadi abu-abu terang -->
+    <color name="cardBackgroundColor">#202A2C</color> <!-- Warna kartu jadi abu-abu gelap -->
+    <color name="appBackgroundColor">#121212</color> <!-- Warna background utama jadi Abu-abu Gelap -->
+
+
+    <!-- Warna untuk Status Produk -->
+    <color name="status_safe">#4CAF50</color> <!-- Hijau -->
+    <color name="status_warning">#FFC107</color> <!-- Kuning/Amber -->
+    <color name="status_expired">#F44336</color> <!-- Merah -->
+
+    <!-- Warna FAB tidak berubah -->
+    <color name="fab_background">#2962FF</color>
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/ic_search"
+        android:title="Cari Produk"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+
+    <item
+        android:id="@+id/action_theme"
+        android:title="Ganti Tema"
+        app:showAsAction="never">
+        <menu>
+            <group
+                android:id="@+id/group_theme"
+                android:checkableBehavior="single">
+                <item
+                    android:id="@+id/theme_light"
+                    android:title="Terang" />
+                <item
+                    android:id="@+id/theme_dark"
+                    android:title="Gelap" />
+                <item
+                    android:id="@+id/theme_system"
+                    android:title="Sistem" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_sort"
+        android:icon="@drawable/ic_sort_24"
+        android:title="Sortir"
+        app:showAsAction="never">
+        <menu>
+            <item
+                android:id="@+id/sort_all"
+                android:title="Semua" />
+            <item
+                android:id="@+id/sort_dry"
+                android:title="Kering" />
+            <item
+                android:id="@+id/sort_wet"
+                android:title="Basah" />
+            <item
+                android:id="@+id/sort_frozen"
+                android:title="Beku" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@drawable/ic_settings"
+        android:title="Pengaturan"
+        app:showAsAction="never" />
+
+</menu>
